@@ -54,10 +54,10 @@ if __name__ == "__main__":
         f.close()
 
     # 2. 分离出感兴趣的名词，放在 lst_words 里
-    lst_words = []
+    lst_words = ["广州","埃尔森智能科技"]    # 这里面可以加入你想要出现的词语
     for x in psg.cut(content):
         # 保留名词、人名、地名，长度至少两个字
-        if x.flag in ['n', 'nr', 'ns'] and len(x.word) > 1:
+        if x.flag in ['n', 'nr', 's'] and len(x.word) > 1:
             lst_words.append(x.word)
 
     # 3. 按照词频由大到小排序，放在 lst_sorted 里
@@ -65,7 +65,7 @@ if __name__ == "__main__":
 
     # 4. 打印TOP10
     print('\n序号\t名词\t词频\t柱图\n')
-    for i in range(10):
+    for i in range(20):     # 统计排名前20的词频
         print('{}\t{}\t{}\t{}\n'.format(i + 1, lst_sorted[i][0], lst_sorted[i][1], '▂' * (lst_sorted[i][1] // 100)))
 
     #
